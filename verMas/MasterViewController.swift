@@ -12,6 +12,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
+    var tamanoCelda = CGFloat()
 
 
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class MasterViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,19 +69,25 @@ class MasterViewController: UITableViewController {
         return objects.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       // print(tableView.last)
+        
+        return 40.0
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
+        
+        let cell : TableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        
         let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let strin = (object.description + object.description)
+        cell.label.text = strin
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: indexPath.row)
@@ -89,7 +96,5 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
 }
 
