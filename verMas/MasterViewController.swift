@@ -70,9 +70,8 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       // print(tableView.last)
         
-        return 40.0
+        return tamanoCelda
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -81,6 +80,8 @@ class MasterViewController: UITableViewController {
         let object = objects[indexPath.row] as! NSDate
         let strin = (object.description + object.description)
         cell.label.text = strin
+        tamanoCelda = cell.tamano
+        print(tamanoCelda)
         return cell
     }
 

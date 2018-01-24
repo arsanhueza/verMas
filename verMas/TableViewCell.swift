@@ -18,6 +18,7 @@ class TableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        tamano = 40.0
         botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
         botonReducirTexto.addTarget(self, action: #selector(reducirTamano), for: .touchUpInside)
 
@@ -37,8 +38,6 @@ class TableViewCell: UITableViewCell {
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
-        print(self.frame.height)
-
 
     }
     
@@ -48,6 +47,5 @@ class TableViewCell: UITableViewCell {
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
-        
     }
 }
