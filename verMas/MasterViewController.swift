@@ -35,7 +35,6 @@ class MasterViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @objc
@@ -79,9 +78,8 @@ class MasterViewController: UITableViewController {
         
         let object = objects[indexPath.row] as! NSDate
         let strin = (object.description + object.description)
-        cell.label.text = strin
+        cell.label.text = strin + strin + strin
         tamanoCelda = cell.tamano
-        print(tamanoCelda)
         return cell
     }
 

@@ -8,21 +8,16 @@
 
 import UIKit
 
-
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var botonExpandirTexto: UIButton!
     @IBOutlet weak var botonReducirTexto: UIButton!
     @IBOutlet weak var label: UILabel!
     var tamano = CGFloat()
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        tamano = 40.0
+        tamano = 58.0
         botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
-        botonReducirTexto.addTarget(self, action: #selector(reducirTamano), for: .touchUpInside)
-
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,11 +25,13 @@ class TableViewCell: UITableViewCell {
     }
     
     @objc func expandirTamano(sender: UIButton!){
-        let label = sender.superview?.subviews.last as! UILabel
+        let label = sender.superview?.subviews.first as! UILabel
         label.frame.size.height = 400000.0
         label.numberOfLines = 0
         label.sizeToFit()
         self.frame.size.height = label.frame.maxY
+        botonExpandirTexto.addTarget(self, action: #selector(reducirTamano), for: .touchUpInside)
+        botonExpandirTexto.setTitle("Ver menos", for: .normal)
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
@@ -43,7 +40,12 @@ class TableViewCell: UITableViewCell {
     
     @objc func reducirTamano(sender: UIButton!){
         
-        self.frame.size.height = 40.0
+        let label = sender.superview?.subviews.first as! UILabel
+        label.frame.origin = CGPoint(x: 16.0, y: 18.0)
+        label.frame.size.height = 21.0
+        self.frame.size.height = 58.0
+        botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
+        botonExpandirTexto.setTitle("Ver más", for: .normal)
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
