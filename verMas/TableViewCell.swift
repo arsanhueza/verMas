@@ -17,7 +17,7 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         //tamaño del campo de texto que va a cambiar su tamaño
         tamano = 58.0
-        botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
+        botonCambioTamanoTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,8 +30,8 @@ class TableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.sizeToFit()
         self.frame.size.height = label.frame.maxY
-        botonExpandirTexto.addTarget(self, action: #selector(reducirTamano), for: .touchUpInside)
-        botonExpandirTexto.setTitle("Ver menos", for: .normal)
+        botonCambioTamanoTexto.addTarget(self, action: #selector(reducirTamano), for: .touchUpInside)
+        botonCambioTamanoTexto.setTitle("Ver menos", for: .normal)
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
@@ -44,8 +44,8 @@ class TableViewCell: UITableViewCell {
         label.frame.origin = CGPoint(x: 16.0, y: 18.0)
         label.frame.size.height = 21.0
         self.frame.size.height = 58.0
-        botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
-        botonExpandirTexto.setTitle("Ver más", for: .normal)
+        botonCambioTamanoTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
+        botonCambioTamanoTexto.setTitle("Ver más", for: .normal)
         let tabla = sender.superview?.superview?.superview as! UITableView
         tabla.reloadData()
         tamano = self.frame.height
