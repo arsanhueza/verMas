@@ -9,13 +9,13 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    @IBOutlet weak var botonExpandirTexto: UIButton!
-    @IBOutlet weak var botonReducirTexto: UIButton!
+    @IBOutlet weak var botonCambioTamanoTexto: UIButton!
     @IBOutlet weak var label: UILabel!
     var tamano = CGFloat()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //tamaño del campo de texto que va a cambiar su tamaño
         tamano = 58.0
         botonExpandirTexto.addTarget(self, action: #selector(expandirTamano), for: .touchUpInside)
     }
